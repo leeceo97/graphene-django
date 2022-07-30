@@ -2,6 +2,7 @@ import graphene
 from graphene_django import DjangoObjectType
 
 from ingredients.models import Category, Ingredient
+from ingredients.schema import Query
 
 
 class CategoryType(DjangoObjectType):
@@ -25,7 +26,7 @@ class IngredientType(DjangoObjectType):
         )
 
 
-class Query(graphene.ObjectType):
+class regacy_Query(graphene.ObjectType):
     all_ingredients = graphene.List(IngredientType)
     category_by_name = graphene.Field(CategoryType, name=graphene.String(required=True))
 
